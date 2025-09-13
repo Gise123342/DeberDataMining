@@ -4,6 +4,7 @@ Giselle Cevallos 00325549
 
 
 **Descripción y diagrama de arquitectura.** 
+Esquema: visualizar carpetas evidencias
 
 Este proyecto implementa un pipeline de backfill histórico que extrae información de QuickBooks Online (QBO) para las entidades Invoices, Customers e Items, y la deposita en Postgres dentro de un esquema raw.
 
@@ -45,7 +46,9 @@ docker volume prune -f
 docker-compose up -d --build
 
 Despues de correr el contenedor, lo mejor es abrir los links desde docker descktop y no olvidar
-borrar el contenedor anterior en el caso de tener el mismo nombre 
+borrar el contenedor anterior en el caso de tener el mismo nombre.
+Tuve problemas con la corrida de php admin que no pude solucionar por completo en la subida de el documento a github
+Dentro de mi computadora desckop funciona bien. Visualizar carpeta evidencias
 
 **Gestión de secretos (nombres, propósito, rotación, responsables; sin valores).**
 
