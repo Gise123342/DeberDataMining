@@ -17,6 +17,36 @@ Este proyecto implementa un pipeline de backfill histórico que extrae informaci
 
 **Pasos para levantar contenedores y configurar el proyecto.**
 
+**Clonar el repositorio desde GitHub**
+
+git clone https://github.com/Gise123342/DeberDataMining.git
+
+**Navegar al directorio del proyecto**
+
+cd DeberDataMining
+
+**Verificar contenido del proyecto**
+
+ls -la
+
+** Detener contenedores previos si existen**
+
+docker-compose down -v
+
+ **Limpiar sistema Docker**
+ 
+docker system prune -f
+
+**Eliminar volúmenes huérfanos**
+
+docker volume prune -f
+
+**Levantar el contenedor**
+docker-compose up -d --build
+
+Despues de correr el contenedor, lo mejor es abrir los links desde docker descktop y no olvidar
+borrar el contenedor anterior en el caso de tener el mismo nombre 
+
 **Gestión de secretos (nombres, propósito, rotación, responsables; sin valores).**
 
 
