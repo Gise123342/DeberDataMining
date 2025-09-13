@@ -1,0 +1,37 @@
+# Variables de entorno
+.env
+
+# Datos de Docker volumes (contienen información sensible)
+data/postgres/
+data/pgadmin/
+data/mage/
+
+# Mantener las carpetas pero no el contenido
+!data/.gitkeep
+!data/postgres/.gitkeep
+!data/pgadmin/.gitkeep
+!data/mage/.gitkeep
+
+# Logs
+*.log
+logs/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+
+# Sistema
+.DS_Store
+Thumbs.db
+*.tmp
+*.swp
+
+# IDE
+.vscode/
+.idea/
+*.sublime-*
