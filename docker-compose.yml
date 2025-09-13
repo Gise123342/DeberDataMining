@@ -1,0 +1,53 @@
+services:
+  postgres:
+    image: postgres:13
+    container_name: postgres_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+      TZ: America/Guayaquil
+    volumes:
+      - ./data/postgres:/var/lib/postgresql/data
+    networks:
+      - qbo_network
+    ports:
+      - "5432:5432"
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin
+    restart: unless-stopped
+    depends_on:
+      - postgres
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
+      TZ: America/Guayaquil
+    volumes:
+      - ./data/pgadmin:/var/lib/pgadmin
+    networks:
+      - qbo_network
+    ports:
+      - "8080:80"
+  mage:
+    image: mageai/mageai:latest
+    container_name: mage
+    restart: unless-stopped
+    depends_on:
+      - postgres
+    environment:
+      TZ: America/Guayaquil
+      # Mage Secrets manejarán la conexión a la base de datos
+    volumes:
+      - ./data/mage:/app/projects
+    networks:
+      - qbo_network
+    ports:
+      - "6789:6789"
+    command: ["mage", "start", "/app/projects"]
+
+networks:
+  qbo_network:
+    driver: bridge
